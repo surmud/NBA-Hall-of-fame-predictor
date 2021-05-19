@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>index</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>hof</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14272,10 +14272,17 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="mj2.jpg" alt=""></p>
 <h1 id="What's-in-a-Name:-NBA-Hall-Of-Fame">What's in a Name: NBA Hall Of Fame<a class="anchor-link" href="#What's-in-a-Name:-NBA-Hall-Of-Fame">&#182;</a></h1><h3 id="A-data-science-project-by-Surmud-Jamil,-Sinaan-Younus,-&amp;-Ritesh-Verma">A data science project by Surmud Jamil, Sinaan Younus, &amp; Ritesh Verma<a class="anchor-link" href="#A-data-science-project-by-Surmud-Jamil,-Sinaan-Younus,-&amp;-Ritesh-Verma">&#182;</a></h3><p>Comparison is the foundation of sports. We do it all the time when talking about teams -- who has a better record, who has a better chance to win the championship, etc. Similarly, we do it all the time when talking about players -- who's the biggest, strongest, fastest; who scores the most, who dominates the paint, etc.</p>
 <p>In basketball, specifically in the NBA, a common critique of comparing players across all time periods is that different eras emphasized differnet aspects of the game. Thus, some say that we should only compare players from within the same era, but we disagree. We want to explore this opinion head on -- are today's players truly so much better than the greats of decades past? Did Michael Jordan really go up against "mailmen" quality players who played basketball as a second job, or is that an oversimplifcation by LeBron fans?</p>
 <p>We explore this grey area, and give quantifiable responses with respect to the quantifiable categories of the game. To do so, we pull from two datasets -- one that contains stats of active NBA players from the 2020-21 season, and one that contains stats of HOF inductees. We import and scrape these datasets, respectively -- with both requiring data cleaning/parsing. Both are stored in the Pandas DataFrame format, which gives us the ability to perform SQL-esque commands easily in a Python environment. We ask and answer (through data viz) multiple questions that compare the two eras, and equally the players within each era.</p>
 <p>We end by using ML techniques to predict whether a given active NBA player will enter the HOF based on their most recent performance. We understand that this model may underfit/overfit certain players (who are at the start/end of their careers), but for the most part, it will give us another valuable metric for comparison between eras.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="First,-let's-collect-our-data.">First, let's collect our data.<a class="anchor-link" href="#First,-let's-collect-our-data.">&#182;</a></h2><p>In this notebook, we will use three main sources of NBA data. Two are datasets obtained from Kaggle, and one source will be a data table scraped from basketball-reference.com</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14492,6 +14499,12 @@ a.anchor-link {
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Data-Parsing">Data Parsing<a class="anchor-link" href="#Data-Parsing">&#182;</a></h2><p>First we'll clean our dataset of current NBA stats</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -14551,6 +14564,12 @@ Victor Oladipo 1
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Data-Collection">Data Collection<a class="anchor-link" href="#Data-Collection">&#182;</a></h2><p>Next we'll collect and parse data from Basketball-Reference on NBA Hall of Famers.</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -14964,7 +14983,13 @@ Victor Oladipo 1
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Exploratory-Data-Analysis">Exploratory Data Analysis<a class="anchor-link" href="#Exploratory-Data-Analysis">&#182;</a></h3><p>Note, that by sorting the df, we see that certain metrics were not recorded back in the day (STL, BLK, 3P%). This alone is testament of the fact that the game has changed, and consequently, so have the factors that determine HOF worthiness. Let's move on to statistics that we do have, and explore how they vary through different eras.</p>
+<p>By sorting the dataframe, we see that certain metrics were not recorded back in the day (STL, BLK, 3P%). This alone is testament of the fact that the game has changed, and consequently, so have the factors that determine HOF worthiness. Let's move on to statistics that we do have, and explore how they vary through different eras.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-have-the-stats-of-Hall-of-Fame-inductees-changed-over-the-years?">How have the stats of Hall of Fame inductees changed over the years?<a class="anchor-link" href="#How-have-the-stats-of-Hall-of-Fame-inductees-changed-over-the-years?">&#182;</a></h2><p>Below we'll display the points, rebounds and assists of hall of fame inductees over time.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -17766,7 +17791,7 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Let's-focus-on-points-for-a-second.">Let's focus on points for a second.<a class="anchor-link" href="#Let's-focus-on-points-for-a-second.">&#182;</a></h3><p>We create a linear regression model to see overall trend in HOF PTS across the years. We predict that PPG would be increasing over the years since a common claim is that players have become more skilled in scoring the ball, especially in the context of a less defensive game (due to rule changes) that lends itself to high-scoring results</p>
+<h2 id="Let's-focus-on-points-for-a-second.">Let's focus on points for a second.<a class="anchor-link" href="#Let's-focus-on-points-for-a-second.">&#182;</a></h2><p>We'll create a linear regression model to see overall trend in HOF PTS across the years. We predict that PPG will be increasing over the years since a common claim is that players have become more skilled in scoring the ball, especially in the context of a less defensive game (due to rule changes) that lends itself to high-scoring results</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19885,7 +19910,7 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Next we'll try to compare how Hall of Famers with today's players. To do this we will build a "footprint" for these two categories, by showing what the average hall of famer's stats are, and the stats for the average player today.</p>
+<h2 id="How-do-Hall-of-Famers-compare-with-NBA-players-today?">How do Hall of Famers compare with NBA players today?<a class="anchor-link" href="#How-do-Hall-of-Famers-compare-with-NBA-players-today?">&#182;</a></h2><p>Next we'll try to compare how Hall of Famers with today's players. To do this we will build a "footprint" for these two categories, by showing what the average hall of famer's stats are, and the stats for the average player today.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -19914,6 +19939,11 @@ z
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Your-Average-Hall-of-Famer-vs.-Your-Average-player-today">Your Average Hall of Famer vs. Your Average player today<a class="anchor-link" href="#Your-Average-Hall-of-Famer-vs.-Your-Average-player-today">&#182;</a></h2>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -22011,7 +22041,13 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>It's interesting how the ratio between an average player's stats and a hall of famers stats are <em>nearly the same</em> across categories (2:1). The bars are almost perfectly aligned across the above graphs.</p>
+<h2 id="Twice-the-Power">Twice the Power<a class="anchor-link" href="#Twice-the-Power">&#182;</a></h2><p>It's interesting how the ratio between an average player's stats and a hall of famers stats are <em>nearly the same</em> across categories (2:1). The bars are almost perfectly aligned across the above graphs. Hall of famers consistently put up twice the stats of regular players.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Creating-functions">Creating functions<a class="anchor-link" href="#Creating-functions">&#182;</a></h2><p>Below we'll create some helper functions to help out with some further exploratory analysis</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -22064,7 +22100,7 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>In the modern NBA, the "3 point shot" is a game changer. As the 3 point shot becomes more and more deadly, with more players attempting 3s as a means of scoring, we want to see how much has the 3 point shot evolved over time among HOF players. Most current HOF players aren't from the era of the 3 pointer as that era began 2013 upwards. We hypothesize that the average 3P% among HOF players won't be as high as the average 3P% from current players, because we believe that older pros did not care much about the 3-pointer in their time.</p>
+<h2 id="How-has-the-3-point-shot-changed-throughout-the-history-of-the-NBA?-Are-today's-players-better-shooters?">How has the 3 point shot changed throughout the history of the NBA? Are today's players better shooters?<a class="anchor-link" href="#How-has-the-3-point-shot-changed-throughout-the-history-of-the-NBA?-Are-today's-players-better-shooters?">&#182;</a></h2><p>In the modern NBA, the "3 point shot" is a game changer. As the 3 point shot becomes more and more deadly, with more players attempting 3s as a means of scoring, we want to see how much has the 3 point shot evolved over time among HOF players. Most current HOF players aren't from the era of the 3 pointer as that era began 2013 upwards. We hypothesize that the average 3P% among HOF players won't be as high as the average 3P% from current players, because we believe that older pros did not care much about the 3-pointer in their time.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -22074,8 +22110,6 @@ z
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Back to comparisons with today&#39;s players</span>
-
-
 <span class="n">avg_3pt_hof</span> <span class="o">=</span> <span class="n">calc_category_average</span><span class="p">(</span><span class="n">hof_df</span><span class="p">,</span><span class="s1">&#39;3P%&#39;</span><span class="p">)</span>
 <span class="n">avg_3pt_curr</span> <span class="o">=</span> <span class="n">calc_category_average</span><span class="p">(</span><span class="n">nba2021_df</span><span class="p">,</span> <span class="s1">&#39;3P%&#39;</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -23084,13 +23118,13 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Based on the results of our graph, our hypothesis that the average modern player's 3P% is higher than the average HOF player is correct. We see that the average modern player has about 6% higher 3P% than the average HOF player. As said earlier, this makes sense as players in today's era are more inclined to work on their 3-point shot as the 3 pointer's value is far higher than it used to be in the eras that most HOF players played in.</p>
+<h3 id="Today's-players-have-more-accuracy">Today's players have more accuracy<a class="anchor-link" href="#Today's-players-have-more-accuracy">&#182;</a></h3><p>Based on the results of our graph, our hypothesis that the average modern player's 3P% is higher than the average HOF player is correct. We see that the average modern player has about 6% higher 3P% than the average HOF player. As said earlier, this makes sense as players in today's era are more inclined to work on their 3-point shot as the 3 pointer's value is far higher than it used to be in the eras that most HOF players played in.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The era that HOF players come from was also known as the "bully ball era" where players were very aggresive inside of the arc and more shots were taken inside of the arc. In the NBA it is more common to get blocked inside the arc since that's where layups occur so with that in mind, we hypothesize that the average HOF player would have more blocks than the average modern player, since the average HOF player would be from the "bully ball" era, more layups and inside shots occured than three pointers, so the probability for a block should be higher. Furthermore, as shown prior, three point shots have been more perfected and common among modern NBA players, and the 3 point shot usually is not as blocked as much as a field goal/inside shot.</p>
+<h2 id="Are-hall-of-famers-more-physical-and-defensive-than-today's-players?">Are hall of famers more physical and defensive than today's players?<a class="anchor-link" href="#Are-hall-of-famers-more-physical-and-defensive-than-today's-players?">&#182;</a></h2><p>The era that many HOF players come from was also known as the "bully ball era" where players were very aggresive inside of the arc and more shots were taken inside of the arc. In the NBA it is more common to get blocked inside the arc since that's where layups occur so with that in mind, we hypothesize that the average HOF player would have more blocks than the average modern player, since the average HOF player would be from the "bully ball" era, more layups and inside shots occured than three pointers, so the probability for a block should be higher. Furthermore, as shown prior, three point shots have been more perfected and common among modern NBA players, and the 3 point shot usually is not as blocked as much as a field goal/inside shot.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -24098,7 +24132,13 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Based on the graph, we can conclude that our hypothesis is correct. The average HOF player has more blocks than the average modern nba player. This makes sense as more field goals, which are more frequenlty blocked than outside shots, were taken in the "bully ball" era than in the modern era where the 3 point shot rules. The difference is little more than double (~0.85 vs ~0.4) indiciating that the "bully ball" era was rougher and it was harder to score inside the paint at that time.</p>
+<h2 id="Hall-of-famer's-are-more-physical">Hall of famer's are more physical<a class="anchor-link" href="#Hall-of-famer's-are-more-physical">&#182;</a></h2><p>Based on the graph, we can conclude that our hypothesis is correct. The average HOF player has more blocks than the average modern nba player. This makes sense as more field goals, which are more frequenlty blocked than outside shots, were taken in the "bully ball" era than in the modern era where the 3 point shot rules. The difference is little more than double (~0.85 vs ~0.4) indiciating that the "bully ball" era was rougher and it was harder to score inside the paint at that time.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-selfish-does-a-HOF-player-have-to-be?">How selfish does a HOF player have to be?<a class="anchor-link" href="#How-selfish-does-a-HOF-player-have-to-be?">&#182;</a></h2><p>Below we'll examine the relationship between assists and points between Hall of Famers and today's players. As the number of points a player scores increases, will the assists also increase?</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -24107,8 +24147,7 @@ z
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># How selfish does a HOF player have to be?</span>
-<span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hof_df</span><span class="p">[</span><span class="s1">&#39;PTS&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hof_df</span><span class="p">[</span><span class="s1">&#39;PTS&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ast</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hof_df</span><span class="p">[</span><span class="s1">&#39;AST&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">ast</span><span class="p">)</span>
@@ -25675,13 +25714,13 @@ L 69.603125 50.094687
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>What this graph shows is the relationship between high scoring HOF and how selfish they were (not passing the ball) compared to the realtionship between high-scoring 2021 NBA players and how selfish they are. The HOF line (black line) shows a weakly positive trend (R=.09) between PPG and APG. This indicates that high scoring HOF players, who played during the "bully ball" era, did not share the ball as much. So yes, while they were scoring a lot of points, they were not getting their team as involved. When we look at the 2021 players stats, we see there is a very strong posititve trend (R=.59) between PPG and APG. This means that current high scoring NBA players, still share the ball a lot and get their team involved while scoring a lot of points. This means that it can be said that among the offensive powerhouses among both HOF players and 2021 players, 2021 offensive powerhouses are less selfish, and are more willing to share the ball. It can be said that they are more offensively complete since they are scoring more points and helping their team score points.</p>
+<h3 id="Sharing-is-caring-(nowadays-at-least)">Sharing is caring (nowadays at least)<a class="anchor-link" href="#Sharing-is-caring-(nowadays-at-least)">&#182;</a></h3><p>What this graph shows is the relationship between high scoring HOF and how selfish they were (not passing the ball) compared to the realtionship between high-scoring 2021 NBA players and how selfish they are. The HOF line (black line) shows a weakly positive trend (R=.09) between PPG and APG. This indicates that high scoring HOF players, who played during the "bully ball" era, did not share the ball as much. So yes, while they were scoring a lot of points, they were not getting their team as involved. When we look at the 2021 players stats, we see there is a very strong posititve trend (R=.59) between PPG and APG. This means that current high scoring NBA players, still share the ball a lot and get their team involved while scoring a lot of points. This means that it can be said that among the offensive powerhouses among both HOF players and 2021 players, 2021 offensive powerhouses are less selfish, and are more willing to share the ball. It can be said that they are more offensively complete since they are scoring more points and helping their team score points.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Let's-now-zone-in-on-a-comparison-entirely-within-the-group-of-Hall-of-Fame-players.">Let's now zone in on a comparison entirely within the group of Hall of Fame players.<a class="anchor-link" href="#Let's-now-zone-in-on-a-comparison-entirely-within-the-group-of-Hall-of-Fame-players.">&#182;</a></h3><p>In this example we will be examining a NBA player who we universally deem as an all-time great, seeing how Kobe Bryant compares to the average Hall of Fame inductee. We've established that HOFrs are some distance apart from today's average player, but there must be certain HOFrs that are a distance apart from their own class. We think that Kobe will be, at least in the category that defines the scoreboard: points.</p>
+<h2 id="Let's-now-zone-in-on-a-comparison-entirely-within-the-group-of-Hall-of-Fame-players.">Let's now zone in on a comparison entirely within the group of Hall of Fame players.<a class="anchor-link" href="#Let's-now-zone-in-on-a-comparison-entirely-within-the-group-of-Hall-of-Fame-players.">&#182;</a></h2><p>In honor of his hall of fame induction a few days ago, in this example we will be examining a NBA player who we universally deem as an all-time great, Kobe Bryant. We will see how Kobe Bryant compares to the average Hall of Fame inductee. We've established that HOF'rs are some distance apart from today's average player, but there must be certain HOFrs that are a distance apart from their own class. We think that Kobe will be, at least in the category that defines the scoreboard: points.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -30173,13 +30212,13 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Based on the graphs comparing the average HOF player and Kobe Bryant in a variety of categories, we can see that Kobe Bryant was better offensively than the average HOF player with a higher PTS, and AST. He was however not as effective (compared to the average HOF player) in two main categories, both defenisve, and they were blocks and rebounds. However, with the most All NBA Defensive First Team selections of all time (9), Kobe was by no means lacking in that area. His steals, even, are barely testament of this as they are only slightly above the HOF average. This shows that numbers do not tell the entire story, and Kobe impacted the game in ways that may not be entirely quantifiable</p>
+<h2 id="How-does-Kobe-Compare?">How does Kobe Compare?<a class="anchor-link" href="#How-does-Kobe-Compare?">&#182;</a></h2><p>Based on the graphs comparing the average HOF player and Kobe Bryant in a variety of categories, we can see that Kobe Bryant was better offensively than the average HOF player with a higher PTS, and AST. He was however not as effective (compared to the average HOF player) in two main categories, both defenisve, and they were blocks and rebounds. However, with the most All NBA Defensive First Team selections of all time (9), Kobe was by no means lacking in that area. His steals, even, are barely testament of this as they are only slightly above the HOF average. This shows that numbers do not tell the entire story, and Kobe impacted the game in ways that may not be entirely quantifiable</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Machine-Learning">Machine Learning<a class="anchor-link" href="#Machine-Learning">&#182;</a></h3><p>To train a model for HOF predictions, we need 2 distinct categories -- HOF and non HOF. We build those categories here</p>
+<h2 id="Machine-Learning">Machine Learning<a class="anchor-link" href="#Machine-Learning">&#182;</a></h2><p>Next we'll move onto the machine learning aspect of our project. To train a model for HOF predictions, we need 2 distinct categories -- HOF and non HOF. We build those categories here</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -30384,6 +30423,12 @@ z
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Below, we will compile our data in a comparable format. Since the dataset we are using displays stats by season, we'll need to compute career averages ourselves, so that they can be compared with our data set of hall of famers.</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -30901,6 +30946,12 @@ z
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-can-we-determine-whether-a-player-should-be-inducted?">How can we determine whether a player should be inducted?<a class="anchor-link" href="#How-can-we-determine-whether-a-player-should-be-inducted?">&#182;</a></h2><p>Below, we create our functions for predicting whether a given player will be admitted into the hall of fame. Our criteria will be that a given player must beat the average hall of famer in 1 or more categories. Each category a player exceeds the average hall of famer at will increase their "score"</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -30995,6 +31046,12 @@ z
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Trying-out-the-model">Trying out the model<a class="anchor-link" href="#Trying-out-the-model">&#182;</a></h2><p>Now that we have our functions, we'll try to run our model and see how accurate it is for our dataset.</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -31132,6 +31189,11 @@ Accuracy of classifying hall of famers: 5.223880597014925 %
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The cells above show that the accuracy tends to decrease for the hf_category, and increase for the non_hf category as the number for the threshold increases. Let's plot this below to see how it looks.</p>
 
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Plotting-the-accuracy-as-the-threshold-parameter-changes">Plotting the accuracy as the threshold parameter changes<a class="anchor-link" href="#Plotting-the-accuracy-as-the-threshold-parameter-changes">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -32647,6 +32709,11 @@ L 828.165625 22.318125
 <p>Sometimes players are inducted for honorary purposes, while not having sufficient stats or achievements to support them being in the hall of fame. Looking at the output below can help us examine these outlying cases too. For example, towards the end of the results below, you can see Bobby Jones was recently inducted in the hall of fame. Bobby Jones played in the 1970's during a different era of the NBA, and as a result, may have lower stats compared to hall of fame calibre players today, which is why he wasn't classified as HOF. Our model doesn't yet capture how a hall of fame classification is dependant upon the era the player played in.</p>
 
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Let's-see-which-of-the-actual-hall-of-famers-are-classified-into-the-hall-of-fame,-according-to-our-model.">Let's see which of the actual hall of famers are classified into the hall of fame, according to our model.<a class="anchor-link" href="#Let's-see-which-of-the-actual-hall-of-famers-are-classified-into-the-hall-of-fame,-according-to-our-model.">&#182;</a></h3>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -32836,6 +32903,13 @@ Accuracy of classifying hall of famers: 85.82089552238806 %
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-did-it-do?">How did it do?<a class="anchor-link" href="#How-did-it-do?">&#182;</a></h2><p>From our intuition, it seems as though it did a decent job of classifying the "no brainer" players into the hall of fame. Players like Michael Jordan, Shaquille O'Neal, Abdul-Jabbar, and many others who most people would say should go into the hall of fame without question, made it in.</p>
+<p>The players that our classifier took out of the hall of fame, are lesser known players such as Carl Braun, Chuck Cooper, and Bobby Jones.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Which-of-Today's-NBA-players-will-make-it-to-the-Hall-of-Fame?">Which of Today's NBA players will make it to the Hall of Fame?<a class="anchor-link" href="#Which-of-Today's-NBA-players-will-make-it-to-the-Hall-of-Fame?">&#182;</a></h2><p>Let's run our classifier on today's players and see who will make into the hall of fame.</p>
 <p>First let's run our predictive model using a parameter of 1.</p>
 
@@ -32957,6 +33031,12 @@ YES based on his career averages so far, Trae Young will be a hall of famer
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>From these results, it looks like our model classified a LOT of today's players into the hall of fame. More on this later.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Now let's try running it with a parameter of 2 (below)</p>
 
 </div>
@@ -33027,7 +33107,7 @@ YES based on his career averages so far, Trae Young will be a hall of famer
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Which-list-do-you-agree-with?">Which list do you agree with?<a class="anchor-link" href="#Which-list-do-you-agree-with?">&#182;</a></h2><p>Based on the two different outputs, it seems that although a parameter of 1 gave us the best accuracy in training results, we looked at the lists and realized that a parameter of 2 gave us more "realistic" results. The first list contains players who are all very good, but players who fans or experts would say are not necessarily hall of fame calibre. For example, players like Jeff Teague, Marcus Smart, Collin Sexton, are solid players, but most people wouldn't say they belong in the Hall of Fame. The second list however,gave us more "realistic" names that we could look at and agree that these players are the best of the best and therefore are all hall of famers. The problem that arises is that above, we concluded that a parameter of 1 was the more accurrate parameter. So why is this happening?</p>
+<h2 id="Which-list-do-you-agree-with?">Which list do you agree with?<a class="anchor-link" href="#Which-list-do-you-agree-with?">&#182;</a></h2><p>Based on the two different outputs, it seems that although a parameter of 1 gave us the best accuracy in training results, we looked at the lists and realized that a parameter of 2 gave us more "realistic" results that met our intuition. The first list contains players who are all very good, but players who fans or experts would say are not necessarily hall of fame calibre. For example, players like Jeff Teague, Marcus Smart, Collin Sexton, are solid players, but most people wouldn't say they belong in the Hall of Fame. The second list however,gave us more "realistic" names that we could look at and agree that these players are the best of the best and therefore are all hall of famers. The problem that arises is that above, we concluded that a parameter of 1 was the more accurrate parameter. So why is this happening?</p>
 <p>The first explanation is that our predictive model is only for players who have retired. The data set we are using contains players who are very young, and still in their prime. These players have not had a chance to play in the "declining" stage of their career, so as a result, their career averages are unusually high, compared to where they will be when they retire.</p>
 <p>Another reason could be that the standards for Hall of Famers has gone for players who have played over the past few decades. We saw how players like Bobby Jones, don't necessarily have high stats by today's nba standards, but it was high relative to the time they played in. Therefore, to make a better prediction, it may be better to compute the averages of hall of famers who played within the last 1-2 decades as a basis for whether today's players would make it. As the game has evolved, it may be better to use weight data from more recent eras higher than data from half a century ago. The standards for the Hall of Fame have definitely changed over time.</p>
 <p>Overall, our model did what we told it to do. We have a lot of ideas for improving the model by adding more categories, weighing the different eras differently, and perhaps creating separate models by the position the player plays. We also expect to recieve better results when looking at players who have finished their career, and are waiting to be inducted in to the hall of fame.</p>
@@ -33081,7 +33161,7 @@ YES based on his career averages so far, Trae Young will be a hall of famer
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Unfortunately, Jose Calderon was not classified as a hall of famer. Below you can see his career averages.</p>
+<p>Unfortunately, Jose Calderon was not classified as a hall of famer according to our model. Below you can see his career averages.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -34668,7 +34748,7 @@ z
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Jose-Calderon-Findings">Jose Calderon Findings<a class="anchor-link" href="#Jose-Calderon-Findings">&#182;</a></h2><p>As you can see, Jose Calderon was actually a pretty average nba player, as he averaged 8 points per game throughout his whole career, but he wasn't quite up to par with the average hall of fame level. It's possible that if he was able to bring up his career averages in assists or rebounds up, that he could have potentially reached the classification of Hall of Famer. Perhaps Jose Calderon is better suited in the software engineering industry :)</p>
+<h2 id="Jose-Calderon-Findings">Jose Calderon Findings<a class="anchor-link" href="#Jose-Calderon-Findings">&#182;</a></h2><p>As you can see, Jose Calderon was actually a pretty average nba player, as he averaged 8 points per game throughout his whole career, but he wasn't quite up to par with the average hall of fame level. It's possible that if he was able to bring up his career averages in assists or rebounds up to higher levels, that he could have potentially been classified according to our model. Perhaps Jose Calderon is better suited in the software engineering industry :)</p>
 <h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Thank you for reading through our data science tutorial. This project has allowed us to gain a new appreciation for the different eras of the NBA, and it has allowed us to see how certain statistics can have an influence on how a player's legacy could be regarded. We learned that the year a player has played in can influence how a player is regarded in the history of the NBA. We also gained a lot of valuable experience with machine learning, and we are very interested in continuing our learning in CMSC422.</p>
 
 </div>
